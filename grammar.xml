@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<!DOCTYPE grammar 
+  PUBLIC "-//W3C//DTD GRAMMAR 1.0//EN" "http://www.speech.kth.se/~gabriel/voicexml/grammar.dtd">
+<grammar xmlns="http://www.w3.org/2001/06/grammar" root="START"  xml:lang="en-US" version="1.0">
+
+  <rule id="START" scope="public">
+    <item>dummy</item>
+  </rule>
+  
+  <rule id="REVEAL" scope="public">
+    <item>
+      <ruleref uri="#FACE"/>
+      <tag>out.d1=rules.FACE;</tag>
+    </item>
+    <item>
+      <ruleref uri="#FACE"/>
+      <tag>out.d2=rules.FACE;</tag>
+    </item>
+    <item>
+      <ruleref uri="#FACE"/>
+      <tag>out.d3=rules.FACE;</tag>
+    </item>
+    <item>
+      <ruleref uri="#FACE"/>
+      <tag>out.d4=rules.FACE;</tag>
+    </item>
+    <item>
+      <ruleref uri="#FACE"/>
+      <tag>out.d5=rules.FACE;</tag>
+    </item>
+  </rule>
+  
+  <rule id="BID" scope="public">
+    <one-of>
+      <item>
+        <ruleref uri="#LIAR"/>
+        <tag>out=rules.LIAR;</tag>
+      </item>
+      <item>
+        <ruleref uri="#COUNT"/>
+        <ruleref uri="#FACE"/>
+        <tag>out=rules.COUNT+ ' ' + rules.FACE;</tag>
+      </item>
+    </one-of>
+  </rule>
+  
+  <rule id="LIAR">
+    <item>liar</item>
+  </rule>
+  
+  <rule id="NUMBERS">
+    <one-of>
+      <item>one</item>
+      <item>two</item>
+      <item>three</item>
+      <item>four</item>
+      <item>five</item>
+      <item>six</item>
+      <item>seven</item>
+      <item>eight</item>
+      <item>nine</item>
+      <item>ten</item>
+      <item>eleven</item>
+      <item>twelve</item>
+      <item>thirteen</item>
+      <item>fourteen</item>
+      <item>fifteen</item>
+    </one-of>
+  </rule>
+  
+  <rule id="COUNT" scope="public">
+    <ruleref uri="#NUMBERS"/>
+    <tag>out=rules.NUMBERS;</tag>
+  </rule>
+  
+  <rule id="FACE">
+    <one-of>
+      <item>one</item>
+      <item>two</item>
+      <item>three</item>
+      <item>four</item>
+      <item>five</item>
+      <item>six</item>
+      <item>ones</item>
+      <item>twos</item>
+      <item>threes</item>
+      <item>fours</item>
+      <item>fives</item>
+      <item>sixes</item>
+    </one-of>
+  </rule>
+
+</grammar>
